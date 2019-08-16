@@ -1,0 +1,13 @@
+(define $stirling2
+  (lambda [$n $k]
+    (sum
+      (map
+        (lambda $r (/ (* (power -1 (- k r)) (power r n)) (* (fact r) (fact (- k r)))))
+        (between 1 k)))))
+
+(define $bell 
+  (lambda $n
+    (sum
+      (map
+        (lambda $k (stirling2 n k))
+        (between 0 n)))))
