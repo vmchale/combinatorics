@@ -11,3 +11,5 @@
       (map
         (lambda $k (stirling2 n k))
         (between 0 n)))))
+
+(map bell (between 1 9))
