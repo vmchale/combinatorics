@@ -5,7 +5,7 @@
         (lambda $r (/ (* (power -1 (- k r)) (power r n)) (* (fact r) (fact (- k r)))))
         (between 1 k)))))
 
-(define $bell 
+(define $bell
   (lambda $n
     (sum
       (map
@@ -16,6 +16,19 @@
   (lambda $n
     (/ (comb (* 2 n) n) (+ n 1))))
 
+(define $g
+  (let
+    {[$step
+      (lambda [$x $y]
+        (let {[$n (snd x)] [$i (fst y)] [$m (snd y)]}
+          [(+ i 1) (* i (+ n m))]))]}
 
+    {[0 1] [1 0] @(map step (zip g (cdr g)))}))
+
+; TODO:  bug report w.r.t. let/top-level  definitions?
+(define $derangements
+  (map snd g))
+
+(take 9 derangements)
 (map bell (between 1 9))
 (map catalan (between 1 10))
