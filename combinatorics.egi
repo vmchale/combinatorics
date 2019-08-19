@@ -16,6 +16,13 @@
   (lambda $n
     (/ (comb (* 2 n) n) (+ n 1))))
 
+(define $lucas
+  (lambda $n
+    (match n integer
+      {[,1 1]
+       [,2 3]
+       [$n (+ (lucas (- n 1)) (lucas (- n 2)))]})))
+
 (define $derangements
   (letrec
     {[$g
@@ -32,3 +39,4 @@
 (take 9 derangements)
 (map bell (between 1 9))
 (map catalan (between 1 10))
+(map lucas (between 1 10))
