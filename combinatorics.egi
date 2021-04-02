@@ -1,20 +1,20 @@
-stirling2 n k :=
+def stirling2 n k :=
   sum
     (map
        (\r -> power (-1) (k - r) * power r n / fact r * fact (k - r))
        (between 1 k))
 
-bell n := sum (map (\k -> stirling2 n k) (between 0 n))
+def bell n := sum (map (\k -> stirling2 n k) (between 0 n))
 
-catalan n := comb (2 * n) n / (n + 1)
+def catalan n := comb (2 * n) n / (n + 1)
 
-lucas n :=
+def lucas n :=
   match n as integer with
     | #1 -> 1
     | #2 -> 3
     | $n -> lucas (n - 1) + lucas (n - 2)
 
-derangements :=
+def derangements :=
   let g := let step x y :=
                  let n := snd x
                      i := fst y
